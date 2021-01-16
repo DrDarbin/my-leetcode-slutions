@@ -28,3 +28,18 @@ for i, num in enumerate(nums):
 	complement = target - num
 	if (complement in hasht) and (hasht[complement] != i):
 		return list((i, hasht[complement]))
+
+
+'''
+Solution 3: One-pass hash table solution
+Runtime: 48 ms
+Memory Usage: 14.2 MB
+Time complexity: O(n), 
+Space complexity: O(n)
+'''
+hasht = {}
+for i, num in enumerate(nums):
+	complement = target - num
+	if (complement in hasht) and (hasht[complement] != i):
+		return list((i, hasht[complement]))
+	hasht[num] = i
