@@ -1,6 +1,7 @@
 '''
-TWO SUM
-The problem: https://leetcode.com/problems/two-sum/
+1. Two Sum
+Difficulty: Easy
+https://leetcode.com/problems/two-sum/
 '''
 
 ''' 
