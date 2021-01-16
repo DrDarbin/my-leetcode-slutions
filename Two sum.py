@@ -8,3 +8,16 @@ Space complexity: O(1)
 for i, inum in enumerate(nums):
 	for j, jnum in enumerate(nums[i+1:], i+1):
 		if(inum + jnum == target): return list((i, j))
+
+'''
+Two-pass hash table solution
+Runtime: 44 ms
+Memory Usage: 14.5 MB
+Time complexity: O(n), 
+Space complexity: O(n)
+'''
+dict = {num:i for i, num in enumerate(nums)}        
+for i, num in enumerate(nums):
+	complement = target - num
+	if (complement in dict) and (dict[complement] != i):
+		return list((i, dict[complement]))
