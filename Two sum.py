@@ -23,8 +23,8 @@ Memory Usage: 14.5 MB
 Time complexity: O(n), 
 Space complexity: O(n)
 '''
-dict = {num:i for i, num in enumerate(nums)}        
+hasht = {num:i for i, num in enumerate(nums)}        
 for i, num in enumerate(nums):
 	complement = target - num
-	if (complement in dict) and (dict[complement] != i):
-		return list((i, dict[complement]))
+	if (complement in hasht) and (hasht[complement] != i):
+		return list((i, hasht[complement]))
