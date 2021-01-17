@@ -22,3 +22,19 @@ class Solution:
         
         return  super_word1 == super_word2
 
+
+'''
+Solution 2 with generators
+Time complexity: O(min(m, n))
+Space complexity: O(1)
+'''
+class Solution:
+    def arrayStringsAreEqual(self, word1: List[str], word2: List[str]) -> bool:
+        def letter_generator(words):
+            for word in words:
+                for letter in word:
+                    yield letter
+
+        for letter1, letter2 in zip_longest(letter_generator(word1), letter_generator(word2)):
+            if letter1 != letter2: return False
+        return True
