@@ -9,7 +9,6 @@ Solution 1 with pointers
 Time complexity: O(n)
 Space complexity: O(1)
 '''
-
 class Solution:
     def reverseString(self, s: List[str]) -> None:      
         center = math.floor(len(s)/2)
@@ -18,3 +17,13 @@ class Solution:
             last = s[len(s) - 1 - i]
             s[i] = last
             s[len(s) - 1 - i] = first
+
+
+'''
+Solution 2 with classic python tools
+Time complexity: O(n)
+Space complexity: O(1)
+'''
+class Solution:
+    def reverseString(self, s: List[str]) -> None:
+		s.reverse()
