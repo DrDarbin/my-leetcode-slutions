@@ -121,3 +121,49 @@ class Solution:
                         queue += [child]
         
         return None
+
+'''
+Solution 2: Breadth-first search algorithm without unneccesary letters swaps
+Solution without comments
+
+Time complexity:
+Space complexity: 
+
+Status: Time Limit Exceeded
+'''
+class Solution:
+    def kSimilarity(self, A: str, B: str) -> int:
+        from collections import deque
+        
+        if A == B: return 0
+        
+        def get_children_nodes(A):
+            S = list(A).copy()
+
+            for i in range(len(S)):
+                if S[i] != B[i]: 
+                    for j in range(i+1, len(S)):
+                        if (S[j] == B[i]) and (S[j] != B[j]):
+                            S[i], S[j] = S[j], S[i]
+                            yield "".join(S)
+                            S[i], S[j] = S[j], S[i]
+                        else: 
+                            continue
+                else: 
+                    continue
+        
+        queue = deque()
+        queue += [A]
+        check_depth = {A: 0}
+        
+        while queue:
+            parent = queue.popleft()
+            if parent == B: 
+                return check_depth[parent]
+            else:
+                for child in get_children_nodes(parent):
+                    if child not in check_depth:
+                        check_depth[child] = check_depth[parent]+1
+                        queue += [child]
+        
+        return None
